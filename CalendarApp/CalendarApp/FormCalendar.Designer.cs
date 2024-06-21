@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listView1 = new ListView();
             lblMonday = new Label();
             lblTuesday = new Label();
             lblWednesday = new Label();
@@ -36,62 +35,54 @@
             lblFriday = new Label();
             lblSaturday = new Label();
             lblSunday = new Label();
-            listView2 = new ListView();
-            listView3 = new ListView();
-            listView4 = new ListView();
-            listView5 = new ListView();
-            listView6 = new ListView();
-            listView7 = new ListView();
-            listView8 = new ListView();
-            listView9 = new ListView();
-            listView10 = new ListView();
-            listView11 = new ListView();
-            listView12 = new ListView();
-            listView13 = new ListView();
-            listView14 = new ListView();
-            listView15 = new ListView();
-            listView16 = new ListView();
-            listView17 = new ListView();
-            listView18 = new ListView();
-            listView19 = new ListView();
-            listView20 = new ListView();
-            listView21 = new ListView();
-            listView22 = new ListView();
-            listView23 = new ListView();
-            listView24 = new ListView();
-            listView25 = new ListView();
-            listView26 = new ListView();
-            listView27 = new ListView();
-            listView28 = new ListView();
-            listView29 = new ListView();
-            listView30 = new ListView();
-            listView31 = new ListView();
-            listView32 = new ListView();
-            listView33 = new ListView();
-            listView34 = new ListView();
-            listView35 = new ListView();
+            listView1 = new ScrollingListView();
+            listView2 = new ScrollingListView();
+            listView3 = new ScrollingListView();
+            listView4 = new ScrollingListView();
+            listView5 = new ScrollingListView();
+            listView6 = new ScrollingListView();
+            listView7 = new ScrollingListView();
+            listView8 = new ScrollingListView();
+            listView9 = new ScrollingListView();
+            listView10 = new ScrollingListView();
+            listView11 = new ScrollingListView();
+            listView12 = new ScrollingListView();
+            listView13 = new ScrollingListView();
+            listView14 = new ScrollingListView();
+            listView15 = new ScrollingListView();
+            listView16 = new ScrollingListView();
+            listView17 = new ScrollingListView();
+            listView18 = new ScrollingListView();
+            listView19 = new ScrollingListView();
+            listView20 = new ScrollingListView();
+            listView21 = new ScrollingListView();
+            listView22 = new ScrollingListView();
+            listView23 = new ScrollingListView();
+            listView24 = new ScrollingListView();
+            listView25 = new ScrollingListView();
+            listView26 = new ScrollingListView();
+            listView27 = new ScrollingListView();
+            listView28 = new ScrollingListView();
+            listView29 = new ScrollingListView();
+            listView30 = new ScrollingListView();
+            listView31 = new ScrollingListView();
+            listView32 = new ScrollingListView();
+            listView33 = new ScrollingListView();
+            listView34 = new ScrollingListView();
+            listView35 = new ScrollingListView();
+            listView36 = new ScrollingListView();
+            listView37 = new ScrollingListView();
+            listView38 = new ScrollingListView();
+            listView39 = new ScrollingListView();
+            listView40 = new ScrollingListView();
+            listView41 = new ScrollingListView();
+            listView42 = new ScrollingListView();
             pnlDays = new Panel();
-            listView36 = new ListView();
-            listView37 = new ListView();
-            listView38 = new ListView();
-            listView39 = new ListView();
-            listView40 = new ListView();
-            listView41 = new ListView();
-            listView42 = new ListView();
             dtpMonth = new DateTimePicker();
             btnPreviousMonth = new Button();
             btnNextMonth = new Button();
             pnlDays.SuspendLayout();
             SuspendLayout();
-            // 
-            // listView1
-            // 
-            listView1.Location = new Point(3, 27);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(90, 91);
-            listView1.TabIndex = 0;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
             // 
             // lblMonday
             // 
@@ -163,6 +154,16 @@
             lblSunday.TabIndex = 39;
             lblSunday.Text = "Friday";
             // 
+            // listView1
+            // 
+            listView1.Location = new Point(3, 27);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(90, 91);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.Details;
+            listView1.Scrolled += listView_Scrolled;
+            // 
             // listView2
             // 
             listView2.Location = new Point(99, 27);
@@ -171,6 +172,7 @@
             listView2.TabIndex = 45;
             listView2.UseCompatibleStateImageBehavior = false;
             listView2.View = View.Details;
+            listView2.Scrolled += listView_Scrolled;
             // 
             // listView3
             // 
@@ -180,6 +182,7 @@
             listView3.TabIndex = 46;
             listView3.UseCompatibleStateImageBehavior = false;
             listView3.View = View.Details;
+            listView3.Scrolled += listView_Scrolled;
             // 
             // listView4
             // 
@@ -189,6 +192,7 @@
             listView4.TabIndex = 47;
             listView4.UseCompatibleStateImageBehavior = false;
             listView4.View = View.Details;
+            listView4.Scrolled += listView_Scrolled;
             // 
             // listView5
             // 
@@ -198,6 +202,7 @@
             listView5.TabIndex = 48;
             listView5.UseCompatibleStateImageBehavior = false;
             listView5.View = View.Details;
+            listView5.Scrolled += listView_Scrolled;
             // 
             // listView6
             // 
@@ -207,6 +212,7 @@
             listView6.TabIndex = 49;
             listView6.UseCompatibleStateImageBehavior = false;
             listView6.View = View.Details;
+            listView6.Scrolled += listView_Scrolled;
             // 
             // listView7
             // 
@@ -216,6 +222,7 @@
             listView7.TabIndex = 50;
             listView7.UseCompatibleStateImageBehavior = false;
             listView7.View = View.Details;
+            listView7.Scrolled += listView_Scrolled;
             // 
             // listView8
             // 
@@ -225,6 +232,7 @@
             listView8.TabIndex = 51;
             listView8.UseCompatibleStateImageBehavior = false;
             listView8.View = View.Details;
+            listView8.Scrolled += listView_Scrolled;
             // 
             // listView9
             // 
@@ -234,6 +242,7 @@
             listView9.TabIndex = 52;
             listView9.UseCompatibleStateImageBehavior = false;
             listView9.View = View.Details;
+            listView9.Scrolled += listView_Scrolled;
             // 
             // listView10
             // 
@@ -243,6 +252,7 @@
             listView10.TabIndex = 53;
             listView10.UseCompatibleStateImageBehavior = false;
             listView10.View = View.Details;
+            listView10.Scrolled += listView_Scrolled;
             // 
             // listView11
             // 
@@ -252,6 +262,7 @@
             listView11.TabIndex = 54;
             listView11.UseCompatibleStateImageBehavior = false;
             listView11.View = View.Details;
+            listView11.Scrolled += listView_Scrolled;
             // 
             // listView12
             // 
@@ -261,6 +272,7 @@
             listView12.TabIndex = 55;
             listView12.UseCompatibleStateImageBehavior = false;
             listView12.View = View.Details;
+            listView12.Scrolled += listView_Scrolled;
             // 
             // listView13
             // 
@@ -270,6 +282,7 @@
             listView13.TabIndex = 56;
             listView13.UseCompatibleStateImageBehavior = false;
             listView13.View = View.Details;
+            listView13.Scrolled += listView_Scrolled;
             // 
             // listView14
             // 
@@ -279,6 +292,7 @@
             listView14.TabIndex = 57;
             listView14.UseCompatibleStateImageBehavior = false;
             listView14.View = View.Details;
+            listView14.Scrolled += listView_Scrolled;
             // 
             // listView15
             // 
@@ -288,6 +302,7 @@
             listView15.TabIndex = 58;
             listView15.UseCompatibleStateImageBehavior = false;
             listView15.View = View.Details;
+            listView15.Scrolled += listView_Scrolled;
             // 
             // listView16
             // 
@@ -297,6 +312,7 @@
             listView16.TabIndex = 59;
             listView16.UseCompatibleStateImageBehavior = false;
             listView16.View = View.Details;
+            listView16.Scrolled += listView_Scrolled;
             // 
             // listView17
             // 
@@ -306,6 +322,7 @@
             listView17.TabIndex = 60;
             listView17.UseCompatibleStateImageBehavior = false;
             listView17.View = View.Details;
+            listView17.Scrolled += listView_Scrolled;
             // 
             // listView18
             // 
@@ -315,6 +332,7 @@
             listView18.TabIndex = 61;
             listView18.UseCompatibleStateImageBehavior = false;
             listView18.View = View.Details;
+            listView18.Scrolled += listView_Scrolled;
             // 
             // listView19
             // 
@@ -324,6 +342,7 @@
             listView19.TabIndex = 62;
             listView19.UseCompatibleStateImageBehavior = false;
             listView19.View = View.Details;
+            listView19.Scrolled += listView_Scrolled;
             // 
             // listView20
             // 
@@ -333,6 +352,7 @@
             listView20.TabIndex = 63;
             listView20.UseCompatibleStateImageBehavior = false;
             listView20.View = View.Details;
+            listView20.Scrolled += listView_Scrolled;
             // 
             // listView21
             // 
@@ -342,6 +362,7 @@
             listView21.TabIndex = 64;
             listView21.UseCompatibleStateImageBehavior = false;
             listView21.View = View.Details;
+            listView21.Scrolled += listView_Scrolled;
             // 
             // listView22
             // 
@@ -351,6 +372,7 @@
             listView22.TabIndex = 65;
             listView22.UseCompatibleStateImageBehavior = false;
             listView22.View = View.Details;
+            listView22.Scrolled += listView_Scrolled;
             // 
             // listView23
             // 
@@ -360,6 +382,7 @@
             listView23.TabIndex = 66;
             listView23.UseCompatibleStateImageBehavior = false;
             listView23.View = View.Details;
+            listView23.Scrolled += listView_Scrolled;
             // 
             // listView24
             // 
@@ -369,6 +392,7 @@
             listView24.TabIndex = 67;
             listView24.UseCompatibleStateImageBehavior = false;
             listView24.View = View.Details;
+            listView24.Scrolled += listView_Scrolled;
             // 
             // listView25
             // 
@@ -378,6 +402,7 @@
             listView25.TabIndex = 68;
             listView25.UseCompatibleStateImageBehavior = false;
             listView25.View = View.Details;
+            listView25.Scrolled += listView_Scrolled;
             // 
             // listView26
             // 
@@ -387,6 +412,7 @@
             listView26.TabIndex = 69;
             listView26.UseCompatibleStateImageBehavior = false;
             listView26.View = View.Details;
+            listView26.Scrolled += listView_Scrolled;
             // 
             // listView27
             // 
@@ -396,6 +422,7 @@
             listView27.TabIndex = 70;
             listView27.UseCompatibleStateImageBehavior = false;
             listView27.View = View.Details;
+            listView27.Scrolled += listView_Scrolled;
             // 
             // listView28
             // 
@@ -405,6 +432,7 @@
             listView28.TabIndex = 71;
             listView28.UseCompatibleStateImageBehavior = false;
             listView28.View = View.Details;
+            listView28.Scrolled += listView_Scrolled;
             // 
             // listView29
             // 
@@ -414,6 +442,7 @@
             listView29.TabIndex = 72;
             listView29.UseCompatibleStateImageBehavior = false;
             listView29.View = View.Details;
+            listView29.Scrolled += listView_Scrolled;
             // 
             // listView30
             // 
@@ -423,6 +452,7 @@
             listView30.TabIndex = 73;
             listView30.UseCompatibleStateImageBehavior = false;
             listView30.View = View.Details;
+            listView30.Scrolled += listView_Scrolled;
             // 
             // listView31
             // 
@@ -432,6 +462,7 @@
             listView31.TabIndex = 74;
             listView31.UseCompatibleStateImageBehavior = false;
             listView31.View = View.Details;
+            listView31.Scrolled += listView_Scrolled;
             // 
             // listView32
             // 
@@ -441,6 +472,7 @@
             listView32.TabIndex = 75;
             listView32.UseCompatibleStateImageBehavior = false;
             listView32.View = View.Details;
+            listView32.Scrolled += listView_Scrolled;
             // 
             // listView33
             // 
@@ -450,6 +482,7 @@
             listView33.TabIndex = 76;
             listView33.UseCompatibleStateImageBehavior = false;
             listView33.View = View.Details;
+            listView33.Scrolled += listView_Scrolled;
             // 
             // listView34
             // 
@@ -459,6 +492,7 @@
             listView34.TabIndex = 77;
             listView34.UseCompatibleStateImageBehavior = false;
             listView34.View = View.Details;
+            listView34.Scrolled += listView_Scrolled;
             // 
             // listView35
             // 
@@ -468,6 +502,77 @@
             listView35.TabIndex = 78;
             listView35.UseCompatibleStateImageBehavior = false;
             listView35.View = View.Details;
+            listView35.Scrolled += listView_Scrolled;
+            // 
+            // listView36
+            // 
+            listView36.Location = new Point(3, 512);
+            listView36.Name = "listView36";
+            listView36.Size = new Size(90, 91);
+            listView36.TabIndex = 85;
+            listView36.UseCompatibleStateImageBehavior = false;
+            listView36.View = View.Details;
+            listView36.Scrolled += listView_Scrolled;
+            // 
+            // listView37
+            // 
+            listView37.Location = new Point(99, 512);
+            listView37.Name = "listView37";
+            listView37.Size = new Size(90, 91);
+            listView37.TabIndex = 86;
+            listView37.UseCompatibleStateImageBehavior = false;
+            listView37.View = View.Details;
+            listView37.Scrolled += listView_Scrolled;
+            // 
+            // listView38
+            // 
+            listView38.Location = new Point(195, 512);
+            listView38.Name = "listView38";
+            listView38.Size = new Size(90, 91);
+            listView38.TabIndex = 87;
+            listView38.UseCompatibleStateImageBehavior = false;
+            listView38.View = View.Details;
+            listView38.Scrolled += listView_Scrolled;
+            // 
+            // listView39
+            // 
+            listView39.Location = new Point(291, 512);
+            listView39.Name = "listView39";
+            listView39.Size = new Size(90, 91);
+            listView39.TabIndex = 89;
+            listView39.UseCompatibleStateImageBehavior = false;
+            listView39.View = View.Details;
+            listView39.Scrolled += listView_Scrolled;
+            // 
+            // listView40
+            // 
+            listView40.Location = new Point(387, 512);
+            listView40.Name = "listView40";
+            listView40.Size = new Size(90, 91);
+            listView40.TabIndex = 88;
+            listView40.UseCompatibleStateImageBehavior = false;
+            listView40.View = View.Details;
+            listView40.Scrolled += listView_Scrolled;
+            // 
+            // listView41
+            // 
+            listView41.Location = new Point(483, 512);
+            listView41.Name = "listView41";
+            listView41.Size = new Size(90, 91);
+            listView41.TabIndex = 90;
+            listView41.UseCompatibleStateImageBehavior = false;
+            listView41.View = View.Details;
+            listView41.Scrolled += listView_Scrolled;
+            // 
+            // listView42
+            // 
+            listView42.Location = new Point(579, 512);
+            listView42.Name = "listView42";
+            listView42.Size = new Size(90, 91);
+            listView42.TabIndex = 91;
+            listView42.UseCompatibleStateImageBehavior = false;
+            listView42.View = View.Details;
+            listView42.Scrolled += listView_Scrolled;
             // 
             // pnlDays
             // 
@@ -526,69 +631,6 @@
             pnlDays.Size = new Size(676, 610);
             pnlDays.TabIndex = 79;
             // 
-            // listView36
-            // 
-            listView36.Location = new Point(3, 512);
-            listView36.Name = "listView36";
-            listView36.Size = new Size(90, 91);
-            listView36.TabIndex = 85;
-            listView36.UseCompatibleStateImageBehavior = false;
-            listView36.View = View.Details;
-            // 
-            // listView37
-            // 
-            listView37.Location = new Point(99, 512);
-            listView37.Name = "listView37";
-            listView37.Size = new Size(90, 91);
-            listView37.TabIndex = 86;
-            listView37.UseCompatibleStateImageBehavior = false;
-            listView37.View = View.Details;
-            // 
-            // listView38
-            // 
-            listView38.Location = new Point(195, 512);
-            listView38.Name = "listView38";
-            listView38.Size = new Size(90, 91);
-            listView38.TabIndex = 87;
-            listView38.UseCompatibleStateImageBehavior = false;
-            listView38.View = View.Details;
-            // 
-            // listView39
-            // 
-            listView39.Location = new Point(291, 512);
-            listView39.Name = "listView39";
-            listView39.Size = new Size(90, 91);
-            listView39.TabIndex = 89;
-            listView39.UseCompatibleStateImageBehavior = false;
-            listView39.View = View.Details;
-            // 
-            // listView40
-            // 
-            listView40.Location = new Point(387, 512);
-            listView40.Name = "listView40";
-            listView40.Size = new Size(90, 91);
-            listView40.TabIndex = 88;
-            listView40.UseCompatibleStateImageBehavior = false;
-            listView40.View = View.Details;
-            // 
-            // listView41
-            // 
-            listView41.Location = new Point(483, 512);
-            listView41.Name = "listView41";
-            listView41.Size = new Size(90, 91);
-            listView41.TabIndex = 90;
-            listView41.UseCompatibleStateImageBehavior = false;
-            listView41.View = View.Details;
-            // 
-            // listView42
-            // 
-            listView42.Location = new Point(579, 512);
-            listView42.Name = "listView42";
-            listView42.Size = new Size(90, 91);
-            listView42.TabIndex = 91;
-            listView42.UseCompatibleStateImageBehavior = false;
-            listView42.View = View.Details;
-            // 
             // dtpMonth
             // 
             dtpMonth.CustomFormat = " MMMM yyyy ";
@@ -632,6 +674,7 @@
             Controls.Add(btnNextMonth);
             Controls.Add(btnPreviousMonth);
             Controls.Add(dtpMonth);
+            FormBorderStyle = FormBorderStyle.Fixed3D;
             MaximizeBox = false;
             Name = "FormCalendar";
             Text = "Calendar";
@@ -643,7 +686,6 @@
 
         #endregion
 
-        private ListView listView1;
         private Label lblMonday;
         private Label lblTuesday;
         private Label lblWednesday;
@@ -651,48 +693,49 @@
         private Label lblFriday;
         private Label lblSaturday;
         private Label lblSunday;
-        private ListView listView2;
-        private ListView listView3;
-        private ListView listView4;
-        private ListView listView5;
-        private ListView listView6;
-        private ListView listView7;
-        private ListView listView8;
-        private ListView listView9;
-        private ListView listView10;
-        private ListView listView11;
-        private ListView listView12;
-        private ListView listView13;
-        private ListView listView14;
-        private ListView listView15;
-        private ListView listView16;
-        private ListView listView17;
-        private ListView listView18;
-        private ListView listView19;
-        private ListView listView20;
-        private ListView listView21;
-        private ListView listView22;
-        private ListView listView23;
-        private ListView listView24;
-        private ListView listView25;
-        private ListView listView26;
-        private ListView listView27;
-        private ListView listView28;
-        private ListView listView29;
-        private ListView listView30;
-        private ListView listView31;
-        private ListView listView32;
-        private ListView listView33;
-        private ListView listView34;
-        private ListView listView35;
+        private ScrollingListView listView1;
+        private ScrollingListView listView2;
+        private ScrollingListView listView3;
+        private ScrollingListView listView4;
+        private ScrollingListView listView5;
+        private ScrollingListView listView6;
+        private ScrollingListView listView7;
+        private ScrollingListView listView8;
+        private ScrollingListView listView9;
+        private ScrollingListView listView10;
+        private ScrollingListView listView11;
+        private ScrollingListView listView12;
+        private ScrollingListView listView13;
+        private ScrollingListView listView14;
+        private ScrollingListView listView15;
+        private ScrollingListView listView16;
+        private ScrollingListView listView17;
+        private ScrollingListView listView18;
+        private ScrollingListView listView19;
+        private ScrollingListView listView20;
+        private ScrollingListView listView21;
+        private ScrollingListView listView22;
+        private ScrollingListView listView23;
+        private ScrollingListView listView24;
+        private ScrollingListView listView25;
+        private ScrollingListView listView26;
+        private ScrollingListView listView27;
+        private ScrollingListView listView28;
+        private ScrollingListView listView29;
+        private ScrollingListView listView30;
+        private ScrollingListView listView31;
+        private ScrollingListView listView32;
+        private ScrollingListView listView33;
+        private ScrollingListView listView34;
+        private ScrollingListView listView35;
+        private ScrollingListView listView36;
+        private ScrollingListView listView37;
+        private ScrollingListView listView38;
+        private ScrollingListView listView39;
+        private ScrollingListView listView40;
+        private ScrollingListView listView41;
+        private ScrollingListView listView42;
         private Panel pnlDays;
-        private ListView listView42;
-        private ListView listView41;
-        private ListView listView40;
-        private ListView listView39;
-        private ListView listView38;
-        private ListView listView37;
-        private ListView listView36;
         private DateTimePicker dtpMonth;
         private Button btnPreviousMonth;
         private Button btnNextMonth;
