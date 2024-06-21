@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 namespace CalendarApp
 {
     public partial class FormCalendar : Form
@@ -38,6 +36,7 @@ namespace CalendarApp
             {
                 listViewDays[i].Columns.Clear();
                 listViewDays[i].Items.Clear();
+                listViewDays[i].Hide();
             }
         }
         private void FillCalendarForMonth()
@@ -46,32 +45,40 @@ namespace CalendarApp
 
             DateTime firstOfMonth = currentMonth;
             DateTime lastOfMonth = currentMonth.AddMonths(1).AddDays(-1);
+
+            int daysInMonth = lastOfMonth.Day;
+            int firstDayToFill = (int)(firstOfMonth.DayOfWeek + 6) % 7;
+            int lastDayToFill = firstDayToFill + daysInMonth;
+
+            // Resize the calendar if too small
+            ResizeCalendar(lastDayToFill);
+
+            // Fill days
+            for (int i = firstDayToFill; i < lastDayToFill; i++)
+            {
+                int day = i - firstDayToFill + 1;
+                listViewDays[i].Columns.Add(day.ToString(), listViewDays[i].Width - 4);
+                listViewDays[i].Show();
+            }
+        }
+
+        private void ResizeCalendar(int lastDayToFill)
+        {
             int formHeight = initialFormHeight;
             int panelHeight = initialPanelHeight;
 
-            int firstDayToFill = (int)(firstOfMonth.DayOfWeek + 6) % 7;
-            int daysInMonth = lastOfMonth.Day;
-
-            // Resize the calendar if too small
-            if (firstDayToFill + daysInMonth <= 35)
+            if (lastDayToFill <= 35)
             {
                 formHeight -= rowHeight;
                 panelHeight -= rowHeight;
             }
-            if (firstDayToFill + daysInMonth <= 28)
+            if (lastDayToFill <= 28)
             {
                 formHeight -= rowHeight;
                 panelHeight -= rowHeight;
             }
             this.Height = formHeight;
             pnlDays.Height = panelHeight;
-
-            // Fill days
-            for (int i = firstDayToFill; i < firstDayToFill + daysInMonth; i++)
-            {
-                int day = i - firstDayToFill + 1;
-                listViewDays[i].Columns.Add(day.ToString(), listViewDays[i].Width - 4);
-            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
