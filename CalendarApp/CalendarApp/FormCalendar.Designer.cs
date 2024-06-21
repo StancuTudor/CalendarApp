@@ -1,4 +1,6 @@
-﻿namespace CalendarApp
+﻿using CalendarApp.CustomControls;
+
+namespace CalendarApp
 {
     partial class FormCalendar
     {
@@ -81,7 +83,13 @@
             dtpMonth = new DateTimePicker();
             btnPreviousMonth = new Button();
             btnNextMonth = new Button();
+            pnlConfig = new Panel();
+            dgvConfig = new DataGridView();
+            btnRefresh = new Button();
+            chkShowConfig = new CheckBox();
             pnlDays.SuspendLayout();
+            pnlConfig.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvConfig).BeginInit();
             SuspendLayout();
             // 
             // lblMonday
@@ -636,7 +644,7 @@
             dtpMonth.CustomFormat = " MMMM yyyy ";
             dtpMonth.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpMonth.Format = DateTimePickerFormat.Custom;
-            dtpMonth.Location = new Point(265, 12);
+            dtpMonth.Location = new Point(265, 16);
             dtpMonth.Name = "dtpMonth";
             dtpMonth.ShowUpDown = true;
             dtpMonth.Size = new Size(175, 33);
@@ -646,7 +654,7 @@
             // btnPreviousMonth
             // 
             btnPreviousMonth.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPreviousMonth.Location = new Point(12, 12);
+            btnPreviousMonth.Location = new Point(217, 13);
             btnPreviousMonth.Name = "btnPreviousMonth";
             btnPreviousMonth.Size = new Size(42, 38);
             btnPreviousMonth.TabIndex = 43;
@@ -657,7 +665,7 @@
             // btnNextMonth
             // 
             btnNextMonth.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNextMonth.Location = new Point(646, 12);
+            btnNextMonth.Location = new Point(446, 13);
             btnNextMonth.Name = "btnNextMonth";
             btnNextMonth.Size = new Size(42, 38);
             btnNextMonth.TabIndex = 44;
@@ -665,11 +673,53 @@
             btnNextMonth.UseVisualStyleBackColor = true;
             btnNextMonth.Click += btnNextMonth_Click;
             // 
+            // pnlConfig
+            // 
+            pnlConfig.BorderStyle = BorderStyle.Fixed3D;
+            pnlConfig.Controls.Add(dgvConfig);
+            pnlConfig.Location = new Point(694, 56);
+            pnlConfig.Name = "pnlConfig";
+            pnlConfig.Size = new Size(460, 610);
+            pnlConfig.TabIndex = 80;
+            // 
+            // dgvConfig
+            // 
+            dgvConfig.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvConfig.Location = new Point(3, 3);
+            dgvConfig.Name = "dgvConfig";
+            dgvConfig.Size = new Size(450, 597);
+            dgvConfig.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRefresh.Location = new Point(992, 12);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(157, 38);
+            btnRefresh.TabIndex = 81;
+            btnRefresh.Text = "Refresh calendar";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
+            // chkShowConfig
+            // 
+            chkShowConfig.CheckAlign = ContentAlignment.MiddleRight;
+            chkShowConfig.Location = new Point(584, 16);
+            chkShowConfig.Name = "chkShowConfig";
+            chkShowConfig.Size = new Size(104, 37);
+            chkShowConfig.TabIndex = 82;
+            chkShowConfig.Text = "Show configurations";
+            chkShowConfig.UseVisualStyleBackColor = true;
+            chkShowConfig.CheckedChanged += chkShowConfig_CheckedChanged;
+            // 
             // FormCalendar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(700, 670);
+            ClientSize = new Size(1166, 670);
+            Controls.Add(chkShowConfig);
+            Controls.Add(btnRefresh);
+            Controls.Add(pnlConfig);
             Controls.Add(pnlDays);
             Controls.Add(btnNextMonth);
             Controls.Add(btnPreviousMonth);
@@ -678,9 +728,11 @@
             MaximizeBox = false;
             Name = "FormCalendar";
             Text = "Calendar";
-            Load += Form1_Load;
+            Load += FormCalendar_Load;
             pnlDays.ResumeLayout(false);
             pnlDays.PerformLayout();
+            pnlConfig.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvConfig).EndInit();
             ResumeLayout(false);
         }
 
@@ -739,5 +791,9 @@
         private DateTimePicker dtpMonth;
         private Button btnPreviousMonth;
         private Button btnNextMonth;
+        private Panel pnlConfig;
+        private DataGridView dgvConfig;
+        private Button btnRefresh;
+        private CheckBox chkShowConfig;
     }
 }

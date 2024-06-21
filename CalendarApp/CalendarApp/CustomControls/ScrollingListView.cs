@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CalendarApp
+namespace CalendarApp.CustomControls
 {
     public partial class ScrollingListView : ListView
     {
@@ -14,7 +14,7 @@ namespace CalendarApp
         /// <summary> 
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer? components = null;
+        private IContainer? components = null;
 
         [Category("Action")]
         public event ScrollEventHandler? Scrolled = null;
@@ -39,9 +39,9 @@ namespace CalendarApp
         }
 
         [DllImport("user32.dll", SetLastError = true)]
-        private static extern int GetScrollInfo(IntPtr hWnd, int n, ref ScrollInfoStruct lpScrollInfo);
+        private static extern int GetScrollInfo(nint hWnd, int n, ref ScrollInfoStruct lpScrollInfo);
 
-        protected override void WndProc(ref System.Windows.Forms.Message msg)
+        protected override void WndProc(ref Message msg)
         {
             if (msg.Msg == WM_VSCROLL)
             {
@@ -68,7 +68,7 @@ namespace CalendarApp
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && components != null)
                 components.Dispose();
             base.Dispose(disposing);
         }

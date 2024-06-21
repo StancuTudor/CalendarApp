@@ -1,3 +1,5 @@
+using CalendarApp.Models;
+
 namespace CalendarApp
 {
     internal static class Program

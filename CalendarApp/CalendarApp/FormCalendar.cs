@@ -1,3 +1,7 @@
+using System.Windows.Forms;
+using CalendarApp.CustomControls;
+using CalendarApp.Models;
+
 namespace CalendarApp
 {
     public partial class FormCalendar : Form
@@ -9,6 +13,7 @@ namespace CalendarApp
         private DateTime firstOfMonth { get => currentMonth; }
         private DateTime lastOfMonth { get => currentMonth.AddMonths(1).AddDays(-1); }
         private int initialPanelHeight;
+        private int initialDGVHeight;
         private int initialFormHeight;
         private int rowHeight;
         public FormCalendar(List<Event> events)
@@ -18,6 +23,7 @@ namespace CalendarApp
 
             this.events = events;
             initialPanelHeight = pnlDays.Height;
+            initialDGVHeight = dgvConfig.Height;
             initialFormHeight = this.Height;
             rowHeight = listView8.Location.Y - listView1.Location.Y;
         }
@@ -54,7 +60,7 @@ namespace CalendarApp
             ResizeCalendar(lastDayToFill);
 
             // Get events for this month
-            var eventsForThisMonth = events.Where(IsEventInMonth).ToList();
+            var eventsForThisMonth = events.Where(ShowEvent).ToList();
 
             // Fill days
             for (int i = firstDayToFill; i < lastDayToFill; i++)
@@ -66,8 +72,10 @@ namespace CalendarApp
             }
         }
 
-        private bool IsEventInMonth(Event ev)
+        private bool ShowEvent(Event ev)
         {
+            if (ev.Show == false)
+                return false;
             DateTime startDate = ev.StartDate == null ? DateTime.MinValue : ev.StartDate.Value;
             DateTime endDate = ev.EndDate == null ? DateTime.MinValue : ev.EndDate.Value;
             return startDate <= lastOfMonth && endDate >= firstOfMonth;
@@ -76,20 +84,25 @@ namespace CalendarApp
         private void ResizeCalendar(int lastDayToFill)
         {
             int formHeight = initialFormHeight;
+            int dgvHeight = initialDGVHeight;
             int panelHeight = initialPanelHeight;
 
             if (lastDayToFill <= 35)
             {
                 formHeight -= rowHeight;
+                dgvHeight -= rowHeight;
                 panelHeight -= rowHeight;
             }
             if (lastDayToFill <= 28)
             {
                 formHeight -= rowHeight;
+                dgvHeight -= rowHeight;
                 panelHeight -= rowHeight;
             }
             this.Height = formHeight;
             pnlDays.Height = panelHeight;
+            pnlConfig.Height = panelHeight;
+            dgvConfig.Height = dgvHeight;
         }
 
         private void InsertEvents(ListView listView, int day, List<Event> eventsList)
@@ -121,8 +134,11 @@ namespace CalendarApp
             return startDate <= date && date <= endDate;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FormCalendar_Load(object sender, EventArgs e)
         {
+            chkShowConfig.Checked = false;
+            ShowOrHideConfigs();
+            FillEventsConfig();
             currentMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
         }
 
@@ -157,6 +173,76 @@ namespace CalendarApp
                     var topItem = currentControl.Items[senderTopItemIndex.Value];
                     ((ScrollingListView)control).TopItem = topItem;
                 }
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            FillCalendarForMonth();
+        }
+
+        private void FillEventsConfig()
+        {
+            var statusColumn = new DataGridViewCheckBoxColumn()
+            {
+                DataPropertyName = nameof(Event.Show),
+                HeaderText = "Show",
+                Width = 50,
+
+            };
+            dgvConfig.Columns.Add(statusColumn);
+            var typeColumn = new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = nameof(Event.EventName),
+                HeaderText = "Event",
+                Width = 80
+            };
+            dgvConfig.Columns.Add(typeColumn);
+            var startDateColumn = new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = nameof(Event.StartDate),
+                HeaderText = "Start date",
+                Width = 80,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "yyyy-MM-dd" }
+            };
+            dgvConfig.Columns.Add(startDateColumn);
+            var endDateColumn = new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = nameof(Event.EndDate),
+                HeaderText = "End date",
+                Width = 80,
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "yyyy-MM-dd" }
+            };
+            dgvConfig.Columns.Add(endDateColumn);
+            var colorColumn = new DataGridViewColorColumn()
+            {
+                DataPropertyName = nameof(Event.Color),
+                HeaderText = "Color",
+                Width = 80,
+            };
+            dgvConfig.Columns.Add(colorColumn);
+
+            dgvConfig.DataSource = events;
+        }
+
+        private void chkShowConfig_CheckedChanged(object sender, EventArgs e)
+        {
+            ShowOrHideConfigs();
+        }
+
+        private void ShowOrHideConfigs()
+        {
+            if (chkShowConfig.Checked)
+            {
+                pnlConfig.Show();
+                btnRefresh.Show();
+                this.Width = 1186;
+            }
+            else
+            {
+                pnlConfig.Hide();
+                btnRefresh.Hide();
+                this.Width = 720;
             }
         }
     }
