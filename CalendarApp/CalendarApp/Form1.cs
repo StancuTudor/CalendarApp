@@ -58,6 +58,7 @@ namespace CalendarApp
             {
                 int day = i - firstDayToFill + 1;
                 listViewDays[i].Columns.Add(day.ToString(), listViewDays[i].Width - 4);
+                InsertEvents(listViewDays[i], day);
                 listViewDays[i].Show();
             }
         }
@@ -81,14 +82,38 @@ namespace CalendarApp
             pnlDays.Height = panelHeight;
         }
 
+        private void InsertEvents(ListView listView, int day)
+        {
+            var thisDate = new DateTime(currentMonth.Year, currentMonth.Month, day);
+            foreach (var ev in events)
+            {
+                if (IsDateInEvent(thisDate, ev))
+                {
+                    ListViewItem item = new ListViewItem()
+                    {
+                        Text = ev.EventName,
+                        BackColor = ev.Color
+                    };
+                    listView.Items.Add(item);
+                }
+                else
+                {
+                    listView.Items.Add(string.Empty);
+                }
+            }
+        }
+
+        private bool IsDateInEvent(DateTime date, Event ev)
+        {
+            DateTime startDate = ev.StartDate == null ? DateTime.MinValue : ev.StartDate.Value;
+            DateTime endDate = ev.EndDate == null ? DateTime.MinValue : ev.EndDate.Value;
+
+            return startDate <= date && date <= endDate;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             currentMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
-        }
-
-        private void dtpMonth_ValueChanged(object sender, EventArgs e)
-        {
-            FillCalendarForMonth();
         }
 
         private void btnPreviousMonth_Click(object sender, EventArgs e)
@@ -99,6 +124,11 @@ namespace CalendarApp
         private void btnNextMonth_Click(object sender, EventArgs e)
         {
             currentMonth = currentMonth.AddMonths(1);
+        }
+
+        private void dtpMonth_ValueChanged(object sender, EventArgs e)
+        {
+            FillCalendarForMonth();
         }
     }
 }
