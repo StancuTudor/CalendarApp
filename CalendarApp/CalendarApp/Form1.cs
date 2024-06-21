@@ -7,12 +7,18 @@ namespace CalendarApp
         private List<Event> events;
         private List<ListView> listViewDays = [];
         private DateTime currentMonth { get => dtpMonth.Value; set => dtpMonth.Value = value; }
+        private int initialPanelHeight;
+        private int initialFormHeight;
+        private int rowHeight;
         public FormCalendar(List<Event> events)
         {
             InitializeComponent();
             InitializeListViewDays();
 
             this.events = events;
+            initialPanelHeight = pnlDays.Height;
+            initialFormHeight = this.Height;
+            rowHeight = listView8.Location.Y - listView1.Location.Y;
         }
 
         private void InitializeListViewDays()
@@ -32,7 +38,6 @@ namespace CalendarApp
             {
                 listViewDays[i].Columns.Clear();
                 listViewDays[i].Items.Clear();
-                listViewDays[i].Hide();
             }
         }
         private void FillCalendarForMonth()
@@ -41,14 +46,31 @@ namespace CalendarApp
 
             DateTime firstOfMonth = currentMonth;
             DateTime lastOfMonth = currentMonth.AddMonths(1).AddDays(-1);
+            int formHeight = initialFormHeight;
+            int panelHeight = initialPanelHeight;
 
             int firstDayToFill = (int)(firstOfMonth.DayOfWeek + 6) % 7;
             int daysInMonth = lastOfMonth.Day;
 
+            // Resize the calendar if too small
+            if (firstDayToFill + daysInMonth <= 35)
+            {
+                formHeight -= rowHeight;
+                panelHeight -= rowHeight;
+            }
+            if (firstDayToFill + daysInMonth <= 28)
+            {
+                formHeight -= rowHeight;
+                panelHeight -= rowHeight;
+            }
+            this.Height = formHeight;
+            pnlDays.Height = panelHeight;
+
+            // Fill days
             for (int i = firstDayToFill; i < firstDayToFill + daysInMonth; i++)
             {
-                listViewDays[i].Columns.Add((i - firstDayToFill + 1).ToString(), listViewDays[i].Width - 4);
-                listViewDays[i].Show();
+                int day = i - firstDayToFill + 1;
+                listViewDays[i].Columns.Add(day.ToString(), listViewDays[i].Width - 4);
             }
         }
 
