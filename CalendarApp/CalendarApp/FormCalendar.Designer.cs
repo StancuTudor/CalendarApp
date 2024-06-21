@@ -650,7 +650,7 @@
             btnPreviousMonth.Name = "btnPreviousMonth";
             btnPreviousMonth.Size = new Size(42, 38);
             btnPreviousMonth.TabIndex = 43;
-            btnPreviousMonth.Text = "<";
+            btnPreviousMonth.Text = "◀";
             btnPreviousMonth.UseVisualStyleBackColor = true;
             btnPreviousMonth.Click += btnPreviousMonth_Click;
             // 
@@ -661,7 +661,7 @@
             btnNextMonth.Name = "btnNextMonth";
             btnNextMonth.Size = new Size(42, 38);
             btnNextMonth.TabIndex = 44;
-            btnNextMonth.Text = ">";
+            btnNextMonth.Text = "▶";
             btnNextMonth.UseVisualStyleBackColor = true;
             btnNextMonth.Click += btnNextMonth_Click;
             // 
